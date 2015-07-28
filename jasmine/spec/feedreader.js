@@ -71,8 +71,9 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function(){
+            //define body
             var body = $('body');
-
+            //test the menu is hidden by default
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
          /* TODO: Write a test that ensures the menu changes
@@ -102,6 +103,7 @@ $(function() {
             loadFeed(0, done);
     });
          it('there is at least a single feed entry', function(done){
+            //define entry
             var entry = $('.feed a').children('.entry');
                 expect(entry.length).toBeGreaterThan(0);
                     done();
