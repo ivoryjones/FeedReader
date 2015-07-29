@@ -125,6 +125,7 @@ $(function() {
             expect($('.feed').html()).not.toBe(priorEntry);
             done();
          });
+         //define done
         afterEach(function (done) {
             loadFeed(0,done);
         });
