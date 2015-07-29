@@ -1,16 +1,11 @@
 $(function() {
-    /* This is our first test suite. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+    //This is our first test suite. This suite is all about the RSS feeds definitions, the allFeeds variable in our application.
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. */
+        // This test make sure that the allFeeds variable has been defined and that it is not empty
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-        //This is the second test that ensures the feed has a URL defined and that it is not empty
         it('has a URL defined', function() {
             //define (feed)
             allFeeds.forEach(function(feed){
@@ -39,7 +34,7 @@ $(function() {
             });
         });
     });
-    /* This is the third test suite for The Menu */
+    //Second test suite for The Menu
     describe('The Menu', function() {
         //this test ensures the menu element is hidden by default
         it('is hidden by default', function(){
@@ -48,7 +43,7 @@ $(function() {
             //runs the test to show the menu is hidden by default
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
-         //test that ensures the menu changes are visible when the menu icon is clicked
+        //test that ensures the menu changes are visible when the menu icon is clicked
         it('changes visibility when the menu icon is clicked', function(){
             var icon = $('.menu-icon-link');
             var body = $('body');
@@ -60,7 +55,7 @@ $(function() {
                     expect(body.hasClass('menu-hidden')).toBe(true);
         });
     });
-    //This is the fourth test suite named "Initial Entries"
+    //Third test suite named "Initial Entries"
     describe('Initial Entries', function(){
         //includes Jasmine's beforeEach and asynchronous done() because the loadFeed() is asynchronous
         beforeEach(function(done){
@@ -74,7 +69,7 @@ $(function() {
                     done();
         });
     });
-    //This is a fifth test suite named "New Feed Selection"
+    //This is a fourth test suite named "New Feed Selection"
     describe('New Feed Selection', function(){
         var priorEntry;
         //added Jasmine's beforeEach and done() because loadFeed() is asyncronous
