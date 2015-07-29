@@ -52,8 +52,8 @@ $(function() {
          it('has a name defined', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name).toBeDefined();
+            });
         });
-    });
          it('name is not empty', function() {
             allFeeds.forEach(function(feed){
                 expect(feed.name.length).not.toBe(0);
@@ -85,6 +85,7 @@ $(function() {
             var icon = $('.menu-icon-link');
             var body = $('body');
                 icon.click();
+                //test that the menu display after icon is clicked
                     expect(body.hasClass('menu-hidden')).toBe(false);
                 icon.click();
                     expect(body.hasClass('menu-hidden')).toBe(true);
@@ -112,21 +113,20 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection"*/
     describe('New Feed Selection', function(){
-        var priorEntry = $('.feed a');
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        var priorEntry;
          beforeEach(function(done){
-            loadFeed(0, done);
-         });
-
+            loadFeed(0, function(){
+                priorEntry = $('.feed').html();
+                loadFeed(1, done);
+        });
+    });
+         //test the content change
          it('content changes when a new feed is loaded', function(done){
-            var nextEntry = $('.feed a');
-            expect(nextEntry).not.toBe(priorEntry);
+            expect($('.feed').html()).not.toBe(priorEntry);
             done();
          });
+        afterEach(function (done) {
+            loadFeed(0,done);
+        });
     });
-         
-}());
-
+}())
