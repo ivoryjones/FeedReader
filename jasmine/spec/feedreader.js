@@ -44,43 +44,43 @@ $(function() {
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
         //test that ensures the menu changes are visible when the menu icon is clicked
-        it('changes visibility when the menu icon is clicked', function(){
+        it('changes visibility when the menu icon is clicked', function() {
             var icon = $('.menu-icon-link');
             var body = $('body');
-                icon.click();
-                    //test that the menu display after icon is clicked
-                    expect(body.hasClass('menu-hidden')).toBe(false);
-                icon.click();
-                    //test that the menu is hidden when icon is clicked again
-                    expect(body.hasClass('menu-hidden')).toBe(true);
+            icon.click();
+            //test that the menu display after icon is clicked
+            expect(body.hasClass('menu-hidden')).toBe(false);
+            icon.click();
+            //test that the menu is hidden when icon is clicked again
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
     });
     //Third test suite named "Initial Entries"
-    describe('Initial Entries', function(){
+    describe('Initial Entries', function() {
         //includes Jasmine's beforeEach and asynchronous done() because the loadFeed() is asynchronous
         beforeEach(function(done){
             loadFeed(0, done);
         });
         //test that there is an entry in the .feed container
-        it('there is at least a single feed entry', function(done){
+        it('there is at least a single feed entry', function(done) {
             //define entry
             var entry = $('.feed a').children('.entry');
-                expect(entry.length).toBeGreaterThan(0);
-                    done();
+            expect(entry.length).toBeGreaterThan(0);
+            done();
         });
     });
     //This is a fourth test suite named "New Feed Selection"
-    describe('New Feed Selection', function(){
+    describe('New Feed Selection', function() {
         var priorEntry;
         //added Jasmine's beforeEach and done() because loadFeed() is asyncronous
         beforeEach(function(done){
             loadFeed(0, function(){
                 priorEntry = $('.feed').html();
                 loadFeed(1, done);
+            });
         });
-    });
         //test the content changes when a new feed is loaded
-        it('content changes when a new feed is loaded', function(done){
+        it('content changes when a new feed is loaded', function(done) {
             expect($('.feed').html()).not.toBe(priorEntry);
             done();
         });
